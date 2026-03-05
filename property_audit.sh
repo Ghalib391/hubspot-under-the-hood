@@ -1,5 +1,31 @@
 #!/bin/bash
 
+# --- Interactive Dependency Check ---
+
+# 1. JQcheck
+if ! command -v jq &> /dev/null; then
+    echo "⚠️  JQ is not installed (required for Mac users)."
+    read -p "❓ Do you want to install Homebrew and JQ now? (y/n): " confirm
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+        
+        # has brew
+        if ! command -v brew &> /dev/null; then
+            echo "🚀 Installing Homebrew... (this may take a few minutes)"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            # load brew
+            eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || eval "$(/usr/local/bin/brew shellenv)"
+        fi
+        
+        echo "📦 Installing JQ..."
+        brew install jq
+    else
+        echo "Cannot proceed without JQ. Please install it manually and try again."
+        exit 1
+    fi
+fi
+
+# --- Rest of the Script ---
+
 INPUT="raw_properties.json"
 OUTPUT="hubspot_technical_audit.csv"
 
