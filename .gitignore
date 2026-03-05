@@ -1,0 +1,12 @@
+# Sensitive Data - NUNCA SUBIR ESTO
+raw_properties.json
+hubspot_technical_audit.csv
+audit_report.csv
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
