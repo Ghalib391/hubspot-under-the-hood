@@ -1,12 +1,5 @@
-# Sensitive Data - NUNCA SUBIR ESTO
+# No subir datos sensibles
 raw_properties.json
-hubspot_technical_audit.csv
-audit_report.csv
+*.csv
 .env
-
-# OS Files
 .DS_Store
-Thumbs.db
-
-# Logs
-*.log
